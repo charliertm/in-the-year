@@ -49,7 +49,7 @@ const Home: NextPage = () => {
         </div>
         <a
           className="flex flex-row gap-2 items-center font-medium absolute bottom-16 hover:text-pink-600"
-          href={"https://www.github.com/charliertm/"}
+          href={"https://github.com/charliertm/in-the-year"}
         >
           <Image
             src="https://cdn-icons-png.flaticon.com/512/25/25231.png"
