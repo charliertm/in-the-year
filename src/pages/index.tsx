@@ -43,7 +43,7 @@ const Home: NextPage = () => {
             <b>GET</b>
           </h2>
           <h2 className="font-medium ">
-            https://www.intheyear.vercel.app/api/
+            https://www.in-the-year.vercel.app/api/
             <b className="text-pink-600">{"{year}"}</b>/
           </h2>
         </div>

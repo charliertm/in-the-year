@@ -8,7 +8,7 @@ according to Wikipedia.
 **GET**
 
 ```code
-https://www.intheyear.vercel.app/api/{year}/
+https://www.in-the-year.vercel.app/api/{year}/
 ```
 
 **Response**
@@ -34,7 +34,7 @@ https://www.intheyear.vercel.app/api/{year}/
 
 ```js
 // Request
-fetch("https://www.intheyear.vercel.app/api/-44/")
+fetch("https://www.in-the-year.vercel.app/api/-44/")
 
 // Response
 {
