@@ -14,7 +14,7 @@ export default async function handler(
       message:
         "Your request paramters are invalid. Make sure your are just passing a single year.",
     });
-    response.send(400);
+    response.statusCode = 400;
     return;
   }
   if (!Number.isInteger(Number(year))) {
@@ -23,7 +23,7 @@ export default async function handler(
       message:
         "Your request parameters are not numeric. Make sure your are just passing a single year.",
     });
-    response.send(400);
+    response.statusCode = 400;
     return;
   }
   if (Number(year) < -4000 || Number(year) > 2030 || Number(year) === 0) {
@@ -32,7 +32,7 @@ export default async function handler(
       message:
         "Make sure your requested year is in the range 4000 BC - 2030 AD and is not zero.",
     });
-    response.send(400);
+    response.statusCode = 400;
     return;
   }
 
@@ -58,7 +58,7 @@ export default async function handler(
       message:
         "Unable to parse the page for events, births and deaths. Please try a different year.",
     });
-    response.send(404); // not sure if should be sending a 500 here
+    response.statusCode = 404; // not sure if should be sending a 500 here
     return;
   }
   const eventsNodes = getListNodesBetween(root, eventsNode, birthsNode);
@@ -69,5 +69,6 @@ export default async function handler(
     births: birthsNodes.map((node) => node.structuredText),
     deaths: deathsNodes.map((node) => node.structuredText),
   });
-  response.send(200);
+  response.statusCode = 200;
+  return;
 }

@@ -8,7 +8,7 @@ according to Wikipedia.
 **GET**
 
 ```code
-https://www.in-the-year.vercel.app/api/{year}/
+https://in-the-year.vercel.app/api/{year}/
 ```
 
 **Response**
