@@ -34,7 +34,7 @@ https://in-the-year.vercel.app/api/{year}/
 
 ```js
 // Request
-fetch("https://www.in-the-year.vercel.app/api/-44/")
+fetch("https://in-the-year.vercel.app/api/-44/")
 
 // Response
 {
