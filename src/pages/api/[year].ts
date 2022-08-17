@@ -9,30 +9,27 @@ export default async function handler(
 ) {
   const { year } = request.query;
   if (typeof year !== "string") {
-    response.json({
+    response.status(400).json({
       error: "Invalid request params",
       message:
         "Your request paramters are invalid. Make sure your are just passing a single year.",
     });
-    response.statusCode = 400;
     return;
   }
   if (!Number.isInteger(Number(year))) {
-    response.json({
+    response.status(400).json({
       error: "Invalid request params",
       message:
         "Your request parameters are not numeric. Make sure your are just passing a single year.",
     });
-    response.statusCode = 400;
     return;
   }
   if (Number(year) < -4000 || Number(year) > 2030 || Number(year) === 0) {
-    response.json({
+    response.status(400).json({
       error: "Invalid year",
       message:
         "Make sure your requested year is in the range 4000 BC - 2030 AD and is not zero.",
     });
-    response.statusCode = 400;
     return;
   }
 
@@ -53,22 +50,20 @@ export default async function handler(
   const deathsNode = root.querySelector("#Deaths");
   const referencesNode = root.querySelector("#References");
   if (!eventsNode || !birthsNode || !deathsNode || !referencesNode) {
-    response.json({
+    response.status(404).json({
       error: "Could not parse page structure",
       message:
         "Unable to parse the page for events, births and deaths. Please try a different year.",
     });
-    response.statusCode = 404; // not sure if should be sending a 500 here
     return;
   }
   const eventsNodes = getListNodesBetween(root, eventsNode, birthsNode);
   const birthsNodes = getListNodesBetween(root, birthsNode, deathsNode);
   const deathsNodes = getListNodesBetween(root, deathsNode, referencesNode);
-  response.json({
+  response.status(200).json({
     events: eventsNodes.map((node) => node.structuredText),
     births: birthsNodes.map((node) => node.structuredText),
     deaths: deathsNodes.map((node) => node.structuredText),
   });
-  response.statusCode = 200;
   return;
 }
